@@ -78,7 +78,16 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-rest-client-reactive-jsonb</artifactId>
     </dependency>
-
+    <!-- Redis -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-redis-client</artifactId>
+    </dependency>
+    <!-- Para las validaciones -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-validator</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
