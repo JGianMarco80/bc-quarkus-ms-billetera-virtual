@@ -14,6 +14,7 @@ public interface BMovimientoClient {
     @POST
     Uni<BMovimiento> save(@QueryParam("celular") String celular,
                           @QueryParam("monto") Double monto,
-                          @QueryParam("descripcion") String descripcion);
+                          @QueryParam("descripcion") String descripcion,
+                          @QueryParam("nombreRazonSocial") String nombreRazonSocial);
 
 }

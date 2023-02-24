@@ -62,7 +62,7 @@ public class BilleteraServiceImpl implements BilleteraService {
     }*/
 
     @Override
-    public Uni<String> emitirPago(String id, Double monto, String celular) {
+    public Uni<String> emitirPago(String id, Double monto, String celular, String descripcion) {
         return this.buscarBilleteraXCelular(celular)
                 .onItem()
                 .transform(billetera -> {
@@ -74,7 +74,7 @@ public class BilleteraServiceImpl implements BilleteraService {
                     return billetera;
                 })
                 .call(billetera -> billeteraRepository.update(billetera))
-                .call(billetera -> bMovimientoClient.save(billetera.getCelular(), monto, "Para el chaufa"))
+                .call(billetera -> bMovimientoClient.save(billetera.getCelular(), monto, descripcion, billetera.getNombreRazonSocial()))
                 .call(() -> this.buscarBilleteraXId(id)
                         .onItem()
                         .transform( billetera -> {
@@ -88,7 +88,7 @@ public class BilleteraServiceImpl implements BilleteraService {
                             return billetera;
                         })
                         .call(billetera -> billeteraRepository.update(billetera))
-                        .call(billetera -> bMovimientoClient.save(billetera.getCelular(), (monto * -1), "Para el chaufa")))
+                        .call(billetera -> bMovimientoClient.save(billetera.getCelular(), (monto * -1), descripcion, billetera.getNombreRazonSocial())))
                 .onItem()
                 .transformToUni(b -> Uni.createFrom().item("Se emitió el pago al siguiente numero " + celular));
     }

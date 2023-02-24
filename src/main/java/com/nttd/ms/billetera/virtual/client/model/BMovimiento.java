@@ -17,4 +17,6 @@ public class BMovimiento {
 
     private String descripcion;
 
+    private String nombreRazonSocial;
+
 }

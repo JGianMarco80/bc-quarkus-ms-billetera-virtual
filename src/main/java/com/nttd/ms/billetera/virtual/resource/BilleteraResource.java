@@ -39,8 +39,9 @@ public class BilleteraResource {
     @Transactional
     public Uni<String> emitirPago(@PathParam("id") String id,
                                   @QueryParam("monto") Double monto,
-                                  @QueryParam("celular") String celular){
-        return billeteraService.emitirPago(id, monto, celular);
+                                  @QueryParam("celular") String celular,
+                                  @QueryParam("descripcion") String descripcion){
+        return billeteraService.emitirPago(id, monto, celular, descripcion);
     }
 
 }

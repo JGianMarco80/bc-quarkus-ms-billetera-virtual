@@ -10,6 +10,6 @@ public interface BilleteraService {
 
     Uni<Billetera> save(Billetera billetera);
 
-    Uni<String> emitirPago(String id, Double monto, String celular);
+    Uni<String> emitirPago(String id, Double monto, String celular, String descripcion);
 
 }
