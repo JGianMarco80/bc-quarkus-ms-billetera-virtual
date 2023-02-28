@@ -1,5 +1,6 @@
 package com.nttd.ms.billetera.virtual.resource;
 
+import com.nttd.ms.billetera.virtual.client.model.AceptarCompraBootCoin;
 import com.nttd.ms.billetera.virtual.entity.Billetera;
 import com.nttd.ms.billetera.virtual.service.BilleteraService;
 import io.smallrye.mutiny.Multi;
@@ -34,7 +35,8 @@ public class BilleteraResource {
         return billeteraService.buscarBilleteraXCelular(celular);
     }*/
 
-    @PUT
+    //Proyecto3
+    /*@PUT
     @Path("/emitir-pago/{id}")
     @Transactional
     public Uni<String> emitirPago(@PathParam("id") String id,
@@ -42,6 +44,22 @@ public class BilleteraResource {
                                   @QueryParam("celular") String celular,
                                   @QueryParam("descripcion") String descripcion){
         return billeteraService.emitirPago(id, monto, celular, descripcion);
+    }*/
+
+
+    /*@GET
+    @Path("/solicitudes-aceptadas-bootCoin")
+    public Multi<AceptarCompraBootCoin> obtenerSolicitudesAceptadas(){
+        return billeteraService.obtenerSolicitudesAceptadas();
+    }*/
+
+
+    //Proyecto final
+    @PUT
+    @Path("/emitir-pago")
+    @Transactional
+    public Uni<String> pfEmitirPago(@QueryParam("numeroTransaccion") String numeroTransaccion){
+        return billeteraService.pfEmitirPago(numeroTransaccion);
     }
 
 }
